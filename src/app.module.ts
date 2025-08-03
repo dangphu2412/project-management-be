@@ -3,6 +3,8 @@ import { HealthCheckModule } from './health-check/health-check.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { LoggerModule } from 'nestjs-pino';
 import { DatabaseModule } from './database/database.module';
+import { UsersModule } from './iam/users/users.module';
+import { AuthModule } from './iam/auth/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { DatabaseModule } from './database/database.module';
         };
       },
     }),
+    UsersModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

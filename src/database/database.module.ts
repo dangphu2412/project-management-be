@@ -1,4 +1,4 @@
-import { Logger, Module } from '@nestjs/common';
+import { Global, Logger, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
@@ -6,8 +6,9 @@ import * as schema from './schema';
 
 export type DatabaseClient = ReturnType<typeof drizzle>;
 
-const DB_TOKEN = 'DB_TOKEN';
+export const DB_TOKEN = 'DB_TOKEN';
 
+@Global()
 @Module({
   providers: [
     {
