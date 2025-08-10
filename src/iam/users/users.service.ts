@@ -8,6 +8,7 @@ export class UsersService {
     @Inject(DB_TOKEN)
     private readonly databaseClient: DatabaseClient,
   ) {}
+
   findAll() {
     return this.databaseClient.select().from(users);
   }
