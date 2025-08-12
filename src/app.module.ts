@@ -7,6 +7,7 @@ import { UsersModule } from './iam/users/users.module';
 import { AuthModule } from './iam/auth/auth.module';
 import { UserStoriesModule } from './user-stories/user-stories.module';
 import { MasterDataModule } from './master-data/master-data.module';
+import { SprintsModule } from './sprints/sprints.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { MasterDataModule } from './master-data/master-data.module';
     UsersModule,
     AuthModule,
     UserStoriesModule,
+    SprintsModule,
     MasterDataModule,
   ],
 })
