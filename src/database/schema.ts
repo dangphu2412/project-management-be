@@ -36,6 +36,7 @@ export const sprints = pgTable('sprints', {
 // statuses
 export const statuses = pgTable('statuses', {
   id: uuid('id').primaryKey().defaultRandom(),
+  businessId: varchar('business_id').notNull(),
   name: varchar('name', { length: 50 }).notNull(),
   color: varchar('color', { length: 20 }),
 });
@@ -43,6 +44,7 @@ export const statuses = pgTable('statuses', {
 // priorities
 export const priorities = pgTable('priorities', {
   id: uuid('id').primaryKey().defaultRandom(),
+  businessId: varchar('business_id').notNull(),
   name: varchar('name', { length: 50 }).notNull(),
   level: integer('level').notNull(),
 });

@@ -7,6 +7,7 @@ export const ZodDataTransformPipe = (model: ZodObject<any>): PipeTransform => ({
     if (!result.success) {
       throw new BadRequestException(result.error.format());
     }
+
     return result.data;
   },
 });

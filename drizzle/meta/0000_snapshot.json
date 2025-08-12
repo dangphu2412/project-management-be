@@ -1,5 +1,5 @@
 {
-  "id": "aad15acf-ccba-4857-947e-abb993d61f26",
+  "id": "4894503c-dfa0-48a6-919b-8d9ca6af9092",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -241,6 +241,12 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
+        "business_id": {
+          "name": "business_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
         "name": {
           "name": "name",
           "type": "varchar(50)",
@@ -337,6 +343,12 @@
           "primaryKey": true,
           "notNull": true,
           "default": "gen_random_uuid()"
+        },
+        "business_id": {
+          "name": "business_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
         },
         "name": {
           "name": "name",

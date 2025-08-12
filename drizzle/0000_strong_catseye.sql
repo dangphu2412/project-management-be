@@ -26,6 +26,7 @@ CREATE TABLE "labels" (
 --> statement-breakpoint
 CREATE TABLE "priorities" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"business_id" varchar NOT NULL,
 	"name" varchar(50) NOT NULL,
 	"level" integer NOT NULL
 );
@@ -43,6 +44,7 @@ CREATE TABLE "sprints" (
 --> statement-breakpoint
 CREATE TABLE "statuses" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"business_id" varchar NOT NULL,
 	"name" varchar(50) NOT NULL,
 	"color" varchar(20)
 );
@@ -114,3 +116,20 @@ ALTER TABLE "user_stories" ADD CONSTRAINT "user_stories_sprint_id_sprints_id_fk"
 ALTER TABLE "user_stories" ADD CONSTRAINT "user_stories_status_id_statuses_id_fk" FOREIGN KEY ("status_id") REFERENCES "public"."statuses"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "user_stories" ADD CONSTRAINT "user_stories_priority_id_priorities_id_fk" FOREIGN KEY ("priority_id") REFERENCES "public"."priorities"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "user_stories" ADD CONSTRAINT "user_stories_created_by_users_id_fk" FOREIGN KEY ("created_by") REFERENCES "public"."users"("id") ON DELETE no action ON UPDATE no action;
+
+---
+INSERT INTO "statuses" VALUES (DEFAULT, 'US-001', 'To Do', '#f1f1f1');
+INSERT INTO "statuses" VALUES (DEFAULT, 'US-001', 'In Progress', 'blue');
+INSERT INTO "statuses" VALUES (DEFAULT, 'US-001', 'Finished', 'red');
+---
+INSERT INTO "statuses" VALUES (DEFAULT, 'US-002', 'To Do', '#f1f1f1');
+INSERT INTO "statuses" VALUES (DEFAULT, 'US-002', 'In Progress', 'blue');
+INSERT INTO "statuses" VALUES (DEFAULT, 'US-002', 'Finished', 'red');
+
+INSERT INTO "priorities" VALUES (DEFAULT, 'US-001', 'Low', 0);
+INSERT INTO "priorities" VALUES (DEFAULT, 'US-001', 'Medium', 1);
+INSERT INTO "priorities" VALUES (DEFAULT, 'US-001', 'High', 2);
+
+INSERT INTO "priorities" VALUES (DEFAULT, 'US-002', 'Low', 0);
+INSERT INTO "priorities" VALUES (DEFAULT, 'US-002', 'Medium', 1);
+INSERT INTO "priorities" VALUES (DEFAULT, 'US-002', 'High', 2);
