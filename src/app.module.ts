@@ -6,6 +6,7 @@ import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './iam/users/users.module';
 import { AuthModule } from './iam/auth/auth.module';
 import { UserStoriesModule } from './user-stories/user-stories.module';
+import { MasterDataModule } from './master-data/master-data.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { UserStoriesModule } from './user-stories/user-stories.module';
     UsersModule,
     AuthModule,
     UserStoriesModule,
+    MasterDataModule,
   ],
 })
 export class AppModule {}
