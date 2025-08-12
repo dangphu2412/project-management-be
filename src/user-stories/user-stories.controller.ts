@@ -15,7 +15,7 @@ const createUserStoryDto = z.object({
   title: z.string(),
   description: z.string(),
   priorityId: z.string(),
-  storyPointId: z.string(),
+  point: z.number(),
   sprintId: z.string().nullable(),
   tags: z.array(z.string()),
 });
@@ -26,7 +26,7 @@ const updateUserStoryDto = z.object({
   title: z.string(),
   description: z.string(),
   priorityId: z.string(),
-  storyPointId: z.string(),
+  point: z.number(),
   sprintId: z.string().nullable(),
   tags: z.array(z.string()),
 });

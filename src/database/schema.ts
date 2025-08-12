@@ -57,6 +57,7 @@ export const userStories = pgTable('user_stories', {
   description: text('description'),
   statusId: uuid('status_id').references(() => statuses.id),
   priorityId: uuid('priority_id').references(() => priorities.id),
+  point: integer('point').notNull(),
   createdBy: uuid('created_by').references(() => users.id),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),

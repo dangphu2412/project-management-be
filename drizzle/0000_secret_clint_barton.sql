@@ -82,6 +82,7 @@ CREATE TABLE "user_stories" (
 	"description" text,
 	"status_id" uuid,
 	"priority_id" uuid,
+	"point" integer NOT NULL,
 	"created_by" uuid,
 	"created_at" timestamp DEFAULT now(),
 	"updated_at" timestamp DEFAULT now()

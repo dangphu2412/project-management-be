@@ -1,5 +1,5 @@
 {
-  "id": "4894503c-dfa0-48a6-919b-8d9ca6af9092",
+  "id": "17263312-d70a-4abe-abd9-1971ddf48e2f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -666,6 +666,12 @@
           "type": "uuid",
           "primaryKey": false,
           "notNull": false
+        },
+        "point": {
+          "name": "point",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
         },
         "created_by": {
           "name": "created_by",
