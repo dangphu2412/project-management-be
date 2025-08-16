@@ -8,6 +8,7 @@ import { AuthModule } from './iam/auth/auth.module';
 import { UserStoriesModule } from './user-stories/user-stories.module';
 import { MasterDataModule } from './master-data/master-data.module';
 import { SprintsModule } from './sprints/sprints.module';
+import { BacklogsModule } from './backlogs/backlogs.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { SprintsModule } from './sprints/sprints.module';
     UserStoriesModule,
     SprintsModule,
     MasterDataModule,
+    BacklogsModule,
   ],
 })
 export class AppModule {}
