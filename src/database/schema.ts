@@ -26,6 +26,7 @@ export const sprints = pgTable('sprints', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: varchar('name', { length: 100 }).notNull(),
   goal: text('goal'),
+  status: varchar('status'),
   startDate: date('start_date').notNull(),
   endDate: date('end_date').notNull(),
   isActive: boolean('is_active').default(false),
