@@ -31,8 +31,8 @@ export class AuthController {
   }
 
   @Post('renew')
-  renew(@Body('accessToken') accessToken: string) {
-    return this.authService.renew(accessToken);
+  renew(@Body('refreshToken') refreshToken: string) {
+    return this.authService.renew(refreshToken);
   }
 
   @Post('register')
