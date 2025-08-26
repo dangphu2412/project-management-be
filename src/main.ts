@@ -18,6 +18,9 @@ async function bootstrap() {
 
   const logger = app.get(Logger);
   app.useLogger(logger);
+  app.enableCors({
+    origin: '*',
+  });
 
   const configService = app.get(ConfigService);
 
