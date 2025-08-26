@@ -3,7 +3,7 @@ import { DatabaseClient, DB_TOKEN } from '../../database/database.module';
 import { users } from '../../database/schema';
 import { LoginDTO, LoginResponse, RegisterDTO } from './auth.controller';
 import { eq } from 'drizzle-orm';
-import { sign } from 'jsonwebtoken';
+import { Jwt, sign, verify } from 'jsonwebtoken';
 
 @Injectable()
 export class AuthService {
@@ -22,11 +22,29 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedException('Invalid login credentials');
     }
-    const accessToken = sign({ id: user.id }, 'secret', { expiresIn: '15m' });
+    const accessToken = sign({ sub: user.id } as object, 'secret', {
+      expiresIn: '5m',
+    });
+    const refreshToken = sign({ sub: user.id } as object, 'secret', {
+      expiresIn: '15m',
+    });
 
     return {
       accessToken,
+      refreshToken,
     } as LoginResponse;
+  }
+
+  renew(refreshToken: string) {
+    const payload = verify(refreshToken, 'secret');
+
+    if (typeof payload === 'string') {
+      throw new Error('Invalid renew credentials');
+    }
+
+    return sign({ sub: payload.sub as string } as object, 'secret', {
+      expiresIn: '15m',
+    });
   }
 
   register(registerDTO: RegisterDTO) {

@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Request, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { z } from 'zod/v4';
 import { ZodDataTransformPipe } from '../../shared/data-transform/zod-data-transform.pipe';
@@ -28,6 +28,11 @@ export class AuthController {
   @Post('login')
   login(@Body(ZodDataTransformPipe(loginModel)) loginDTO: LoginDTO) {
     return this.authService.login(loginDTO);
+  }
+
+  @Post('renew')
+  renew(@Body('accessToken') accessToken: string) {
+    return this.authService.renew(accessToken);
   }
 
   @Post('register')
