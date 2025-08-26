@@ -42,9 +42,11 @@ export class AuthService {
       throw new Error('Invalid renew credentials');
     }
 
-    return sign({ sub: payload.sub as string } as object, 'secret', {
-      expiresIn: '1m',
-    });
+    return {
+      accessToken: sign({ sub: payload.sub as string } as object, 'secret', {
+        expiresIn: '1m',
+      }),
+    };
   }
 
   register(registerDTO: RegisterDTO) {
