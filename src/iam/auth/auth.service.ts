@@ -3,7 +3,7 @@ import { DatabaseClient, DB_TOKEN } from '../../database/database.module';
 import { users } from '../../database/schema';
 import { LoginDTO, LoginResponse, RegisterDTO } from './auth.controller';
 import { eq } from 'drizzle-orm';
-import { Jwt, sign, verify } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +23,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid login credentials');
     }
     const accessToken = sign({ sub: user.id } as object, 'secret', {
-      expiresIn: '5m',
+      expiresIn: '1m',
     });
     const refreshToken = sign({ sub: user.id } as object, 'secret', {
       expiresIn: '15m',
@@ -43,7 +43,7 @@ export class AuthService {
     }
 
     return sign({ sub: payload.sub as string } as object, 'secret', {
-      expiresIn: '15m',
+      expiresIn: '1m',
     });
   }
 
